@@ -26,4 +26,7 @@ router.put("/update/:id",controllers.update)
 //search
 router.get("/search",controllers.search)
 
+//mark as done
+router.put("/done/:id",controllers.done)
+
 module.exports = router
