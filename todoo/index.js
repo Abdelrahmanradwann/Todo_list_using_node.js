@@ -6,7 +6,7 @@ const app = express();
 //const path = require('path');
 
 const listRoutes = require("./routes/lists")
-
+const users = require("./routes/auth");
 const url = process.env.MONGO_URL;
 
 mongoose.connect(url).then(()=>{
@@ -18,6 +18,8 @@ app.use(express.json());
 
 
 app.use(listRoutes);
+
+app.use(users);
 
 
 // Global error handler

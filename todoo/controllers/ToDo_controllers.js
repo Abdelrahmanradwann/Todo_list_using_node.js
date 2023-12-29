@@ -49,10 +49,9 @@ exports.search = asyncHandler(async(req,res) => {
 })
 
 exports.done = asyncHandler ( async(req,res) => {
-    console.log("hheerlsdvslk");
+
       const id = req.params.id;
-      const todo = await list.findOne({_id:id});
-      
+      const todo = await list.findOne({_id:id});  
       todo.done = true;
       res.status(200).json(todo);
 })
