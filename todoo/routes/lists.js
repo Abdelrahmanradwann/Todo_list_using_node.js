@@ -3,30 +3,31 @@ const express = require("express")
 //const mongoose = require("mongoose")
 const router = express.Router();
 const controllers = require("../controllers/ToDo_controllers")
-
+const verifyToken = require("../Middleware/verifyToken");
 //const list = require("../model/Todo");
 //const { json } = require("body-parser");
 
 //show list
-router.get("/ToDo",controllers.showList);
+router.get("/ToDo",verifyToken,controllers.showList);
 
 // delete all items
-router.delete("/delete",controllers.deleteMany)
+router.delete("/delete",verifyToken,controllers.deleteMany)
 
 
 // delete one item
-router.delete("/delete/:id",controllers.deleteOne)
+router.delete("/delete/:id",verifyToken,controllers.deleteOne)
 
 // add to list
-router.post("/add",controllers.add)
+router.post("/add",verifyToken,controllers.add)
 
 //update list
-router.put("/update/:id",controllers.update)
+router.put("/update/:id",verifyToken,controllers.update)
 
 //search
-router.get("/search",controllers.search)
+router.get("/search",verifyToken,controllers.search)
 
 //mark as done
-router.put("/done/:id",controllers.done)
+router.put("/done/:id",verifyToken,controllers.done)
+
 
 module.exports = router

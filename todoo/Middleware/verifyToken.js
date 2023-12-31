@@ -7,7 +7,8 @@ const verifyToken = (req, res, next) => {
       return res.status(401).json({ error: 'Unauthorized: No token provided' });
     }
    const token = authtoken.split(' ')[1];
-   console.log(authtoken);
+  //  console.log("tetetetet");
+  //  console.log(token);
     try{
         jwt.verify(token, process.env.SECRET_KEY);
         next();

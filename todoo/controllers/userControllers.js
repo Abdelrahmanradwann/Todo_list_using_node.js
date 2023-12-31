@@ -41,7 +41,9 @@ const login = asyncHandler(async( req,res,next )=>{
    if(!checkPassword){
     return res.status(400).json({ error: 'Incorrect password' });
    }
-
+   const userToken = await token({id:isUser._id});
+   isUser.token = userToken;
+   isUser.save()
    res.status(200).json({message:"Logged in successfully",user:isUser});
 
 })
@@ -58,9 +60,15 @@ const showUser = asyncHandler (async (req,res)=>{
 
 })
 
+const deleteUsers = asyncHandler(async(req,res)=>{
+    await user.deleteMany();
+    res.json("users are deleted")
+})
+
 module.exports = {
   login,
   users,
   signUp,
-  showUser
+  showUser,
+  deleteUsers
 }

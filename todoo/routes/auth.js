@@ -3,10 +3,9 @@ const user = require("../model/user");
 const express = require("express");
 const router = express.Router();
 const userController = require("../controllers/userControllers");
-const verifyToken = require("../Middleware/verifyToken");
 
 //login
-router.post("/login",verifyToken,userController.login);
+router.post("/login",userController.login);
 
 
 //sign up
@@ -17,5 +16,8 @@ router.post("/signUp",userController.signUp)
 router.get("/users",userController.users);
 
 router.get("/showUsers",userController.showUser);
+
+//delete all users
+router.post("/deleteUsers",userController.deleteUsers)
 
 module.exports = router;

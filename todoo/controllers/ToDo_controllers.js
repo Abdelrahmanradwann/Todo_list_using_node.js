@@ -1,18 +1,26 @@
 const mongoose = require("mongoose")
 const list = require("../model/Todo")
-const status = require("../util/status")
+const user = require("../model/user")
 const asyncHandler = require("express-async-handler");
 
 exports.showList = asyncHandler (async(req,res,next) => {
-        const lists =  await list.find({},{"__v":false});
-        // res.json({status:status.SUCCESS,data:{lists}});
+    
+        const token = req.headers["Authorization"] || req.headers["authorization"];
+        const splitToken = token.split(" ")[1];
+        const userr = await user.findOne({token:splitToken});
+        console.log(splitToken);
+        const lists =  await list.find({userId:userr._id},{"__v":false});
+        console.log(lists);
         res.json(lists);
     // res.render("/ToDo")
 });
 
 
 exports.deleteMany = asyncHandler(async(req,res) => {
-    const emptyList =  await list.deleteMany()  
+    const token = req.headers["Authorization"] || req.headers["authorization"];
+    const splitToken = token.split(" ")[1];
+    const userr = await user.findOne({token:splitToken});
+    const emptyList =  await list.deleteMany({userId:userr._id})  
     // res.json({status:status.SUCCESS,data:{emptyList}});
     res.json(emptyList);
 
@@ -27,8 +35,12 @@ exports.deleteOne = asyncHandler(async(req,res) => {
 })
 
 exports.add = asyncHandler(async(req,res,next) => {
+        const token = req.headers["Authorization"] || req.headers["authorization"];
+        const splitToken = token.split(" ")[1];
+        const userr = await user.findOne({token:splitToken});
         const addedList = new list(req.body);
-        const lists = await addedList.save();
+        addedList.userId = userr._id;
+        const lists = await addedList.save({userId:user._id});
         // res.json({status:status.SUCCESS,data:lists});
         res.json(lists);
 
@@ -53,5 +65,6 @@ exports.done = asyncHandler ( async(req,res) => {
       const id = req.params.id;
       const todo = await list.findOne({_id:id});  
       todo.done = true;
+      todo.save()
       res.status(200).json(todo);
 })
