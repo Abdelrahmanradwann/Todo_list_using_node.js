@@ -53,22 +53,32 @@ const users = asyncHandler( async (req,res,next) =>{
      res.json(users);
 })
 
-const showUser = asyncHandler (async (req,res)=>{
+// const showUser = asyncHandler (async (req,res)=>{
   
-  const users = await user.find();
-  res.json({users:users});
+//   const users = await user.find();
+//   res.json({users:users});
 
-})
+// })
 
 const deleteUsers = asyncHandler(async(req,res)=>{
     await user.deleteMany();
     res.json("users are deleted")
 })
 
+const logOut = asyncHandler ( async(req,res)=>{
+  const token = req.headers["Authorization"] || req.headers["authorization"];
+  const splitToken = token.split(" ")[1];
+  const userr = await user.findOne({token:splitToken});
+  await user.findByIdAndUpdate(userr._id, { $set: { token: '' } })
+  await userr.save();
+  res.json("updated token => empty")
+
+})
+
 module.exports = {
   login,
   users,
   signUp,
-  showUser,
-  deleteUsers
+  deleteUsers,
+  logOut
 }

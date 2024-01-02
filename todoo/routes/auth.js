@@ -15,9 +15,11 @@ router.post("/signUp",userController.signUp)
 //get all users
 router.get("/users",userController.users);
 
-router.get("/showUsers",userController.showUser);
+// router.get("/showUsers",userController.showUser);
 
 //delete all users
 router.post("/deleteUsers",userController.deleteUsers)
+
+router.post("/logout",userController.logOut)
 
 module.exports = router;
