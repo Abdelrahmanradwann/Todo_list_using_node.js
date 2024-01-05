@@ -17,5 +17,7 @@ const verifyToken = (req, res, next) => {
         res.status(404).json("error decoted token");
     }
   };
+ 
+  
 
-module.exports = verifyToken;  
+module.exports = verifyToken
