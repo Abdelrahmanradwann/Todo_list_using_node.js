@@ -33,20 +33,29 @@ export default function Register() {
 	}
 
   return (
-	
-	<form onSubmit={(e)=>handleSubmit(e)} className='bg-stone-200 p-6 overflow-y-scroll rounded-md w-2/3 h-3/4 boxShadow flex flex-col justify-center items-center relative z-0'>
-		<h1 className='text-3xl text-center mb-6 font-bold'>{login ? 'LOG IN': "SIGN UP"} NOW</h1>
-		<div className="mb-3">
-			<label htmlFor="email" className="form-label">Email</label><br/>
-			<input type="email" value={email} onChange={(e)=>setEmail(e.target.value)} required id="email" />
-		</div>
-		<div className="mb-3">
-			<label htmlFor="password" className="form-label">Password</label><br/>
-			<input type="password" value={password} onChange={(e)=>setPassword(e.target.value)} required id="password" />
-		</div>
-		<button type="submit" className="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded">Submit</button>
-		{error && <p className='text-red-500 mt-3'>{error}</p>}
-		<Link to={login ? '/register' : '/login'} className="text-violet-500 hover:text-violet-700  mt-2 font-bold py-2 px-4 rounded"> {login ? "SIGN UP" : "LOG IN"} </Link>
+	<form onSubmit={(e)=>handleSubmit(e)} className='bg-stone-100 px-16 h-3/4 flex flex-col justify-center items-center relative z-0 '>
+			<h1 className='text-3xl text-center mb-12 font-bold underline-offset-[16px] underline text-purple-800'>{login ? 'Log in': "Sign up"}</h1>
+			<input type="email"
+				className='mb-3 py-2 px-4 bg-stone-200 outline-none'
+				value={email}
+				placeholder="Email"
+				onChange={(e)=>setEmail(e.target.value)}
+				required
+				id="email"
+			/>
+			<input type="password"
+				className='mb-6 py-2 px-4 bg-stone-200 outline-none'
+				value={password}
+				placeholder='password'
+				onChange={(e)=>setPassword(e.target.value)}
+				required
+				id="password"
+			/>
+			<div className='flex flex-row justify-center gap-6'>
+				<button type="submit" className="bg-violet-700 hover:bg-violet-900 text-white font-bold py-2 px-6 rounded-full transition-all duration-100">Submit</button>
+				<Link to={login ? '/register' : '/login'} className="text-violet-700 hover:text-violet-900 my-auto text-sm hover:underline py-3 px-6  rounded-full bg-stone-200"> {login ? "SIGN UP" : "LOG IN"} </Link>
+			</div>
+			{error && <p className='text-red-500 mt-3'>{error}</p>}
 	</form>
   )
 }

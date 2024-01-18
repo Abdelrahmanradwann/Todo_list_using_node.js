@@ -1,11 +1,10 @@
-import React from 'react'
 import Todo from './Todo'
 import {BrowserRouter, Navigate, Route, Routes} from 'react-router-dom'
 import Register from './Register'
 
 export default function Main() {
-  return (
-	<div className='bg-gradient-to-t h-screen from-blue-500  to-emerald-700 flex flex-col justify-center items-center '>
+	return (
+	<div className='h-screen bg-gradient-to-t from-violet-950 to-indigo-800 flex flex-col justify-center items-center '>
 		<BrowserRouter>
 			<Routes>
 				<Route index element={<Navigate replace to="/login"/>}/>
@@ -15,5 +14,5 @@ export default function Main() {
 			</Routes>
 		</BrowserRouter>
 	</div>
-  )
+	)
 }
