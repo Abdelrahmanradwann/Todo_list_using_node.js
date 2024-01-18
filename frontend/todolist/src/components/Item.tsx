@@ -29,7 +29,7 @@ export default function Item({todo, todos, setTodos}: props) {
 
 	async function markAsDone(id: number){
 		axios.put(`http://localhost:4000/update/${id}`,{
-			done: true
+			done: !todo.done
 		}, {
 			headers: {
 				"Authorization": `Bearer ${localStorage.getItem("token")}`
@@ -38,7 +38,7 @@ export default function Item({todo, todos, setTodos}: props) {
 		.catch(function (error) {
 			console.log(error);
 		});
-		window.location.reload();
+		setTodos(todos.map((item)=>item._id===id?{...item, done: !item.done}:item))
 	}
 
 	async function deleteTodo(){
@@ -76,7 +76,7 @@ export default function Item({todo, todos, setTodos}: props) {
 			className='border-2 border-black '/>}
 
 		<div className="flex flex-row gap-3">
-			<button className='bg-green-500 shadow-md px-2 py-1 rounded text-white hover:bg-green-600 transition-all duration-75 disabled:opacity-50' disabled={todo.done} onClick={() => markAsDone(todo._id)}>Mark as Done</button>
+			<button className='bg-green-500 shadow-md px-2 py-1 rounded text-white hover:bg-green-600 transition-all duration-75 disabled:opacity-50' onClick={() => markAsDone(todo._id)}>{todo.done?"Unmark As Done":"Mark As Done"}</button>
 			<button className='bg-yellow-400 shadow-md px-2 py-1 rounded text-white hover:bg-yellow-600 transition-all duration-75' onClick={()=>{setEditing(!editing);updateTodo()}}> Edit</button>
 			<button className='bg-red-500 shadow-md px-2 py-1 rounded text-white hover:bg-red-600 transition-all duration-75' onClick={() => deleteTodo()}> Delete</button>
 
