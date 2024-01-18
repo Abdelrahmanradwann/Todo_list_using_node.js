@@ -10,6 +10,7 @@ const signUp = asyncHandler (async(req,res,next) => {
   if(!email || !validator.isEmail(email)){
     return res.status(400).json({ error: 'Invalid email address' });
   }
+  
   if(!req.body.password){
     return res.status(400).json({ error: 'Password is required' });
   }

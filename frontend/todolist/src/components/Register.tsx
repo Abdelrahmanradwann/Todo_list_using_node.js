@@ -33,6 +33,7 @@ export default function Register() {
 	}
 
   return (
+	
 	<form onSubmit={(e)=>handleSubmit(e)} className='bg-stone-200 p-6 overflow-y-scroll rounded-md w-2/3 h-3/4 boxShadow flex flex-col justify-center items-center relative z-0'>
 		<h1 className='text-3xl text-center mb-6 font-bold'>{login ? 'LOG IN': "SIGN UP"} NOW</h1>
 		<div className="mb-3">

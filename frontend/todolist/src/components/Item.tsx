@@ -28,6 +28,11 @@ export default function Item({todo, todos, setTodos}: props) {
 	}
 
 	async function markAsDone(id: number){
+		// setTodos(
+		// 	todos.map((todo)=>
+		// 		todo._id === id ? {...todo,done : !todo.done}:todo
+		// 	)
+		// )
 		axios.put(`http://localhost:4000/update/${id}`,{
 			done: true
 		}, {
@@ -38,7 +43,7 @@ export default function Item({todo, todos, setTodos}: props) {
 		.catch(function (error) {
 			console.log(error);
 		});
-		window.location.reload();
+		// window.location.reload();
 	}
 
 	async function deleteTodo(){
