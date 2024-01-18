@@ -25,9 +25,9 @@ export default function Register() {
 		})
 		.catch((e)=>{
 			if(login)
-		  		setError('Error logging in');
+		  		setError('Wrong email or password');
 			else
-				setError("Error Signing Up");
+				setError("Email already exists");
 		  console.log(e);
 		})
 	}
