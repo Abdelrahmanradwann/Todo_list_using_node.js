@@ -13,7 +13,7 @@ This project is a todo list application built with MERN stack technologies, feat
 2. Install the necessary dependencies using **npm install**.
 
 ## Environment Variables
-For the smooth execution of the application, you need to set the following environment variables:
+For the smooth execution of the application, you need to set the following environment variables **(.env)**:
 
 * MONGO_URL = The URL for connecting to your MongoDB database.
 * PORT = The port on which the server will run.
