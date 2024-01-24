@@ -54,13 +54,6 @@ const users = asyncHandler( async (req,res,next) =>{
      res.json(users);
 })
 
-// const showUser = asyncHandler (async (req,res)=>{
-  
-//   const users = await user.find();
-//   res.json({users:users});
-
-// })
-
 const deleteUsers = asyncHandler(async(req,res)=>{
     await user.deleteMany();
     res.json("users are deleted")

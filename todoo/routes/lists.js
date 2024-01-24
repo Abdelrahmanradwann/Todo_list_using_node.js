@@ -1,11 +1,8 @@
 const express = require("express")
-//const {validationResult} = require("express-validator")
-//const mongoose = require("mongoose")
 const router = express.Router();
 const controllers = require("../controllers/ToDo_controllers")
 const verifyToken = require("../Middleware/verifyToken");
-//const list = require("../model/Todo");
-//const { json } = require("body-parser");
+
 
 //show list
 router.get("/ToDo",verifyToken,controllers.showList);

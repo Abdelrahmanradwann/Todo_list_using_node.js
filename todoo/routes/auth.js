@@ -15,7 +15,6 @@ router.post("/signUp",userController.signUp)
 //get all users
 router.get("/users",userController.users);
 
-// router.get("/showUsers",userController.showUser);
 
 //delete all users
 router.post("/deleteUsers",userController.deleteUsers)

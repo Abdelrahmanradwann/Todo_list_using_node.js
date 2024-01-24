@@ -12,7 +12,6 @@ exports.showList = asyncHandler (async(req,res,next) => {
         const lists =  await list.find({userId:userr._id},{"__v":false});
         console.log(lists);
         res.json(lists);
-    // res.render("/ToDo")
 });
 
 
@@ -21,7 +20,6 @@ exports.deleteMany = asyncHandler(async(req,res) => {
     const splitToken = token.split(" ")[1];
     const userr = await user.findOne({token:splitToken});
     const emptyList =  await list.deleteMany({userId:userr._id})  
-    // res.json({status:status.SUCCESS,data:{emptyList}});
     res.json(emptyList);
 
 })
@@ -29,8 +27,7 @@ exports.deleteMany = asyncHandler(async(req,res) => {
 exports.deleteOne = asyncHandler(async(req,res) => {
        const id = req.params.id;
        const lists = await list.deleteOne({_id:id})
-    //    res.json({status:status.SUCCESS,data:{lists}});
-        res.json(lists);
+       res.json(lists);
 
 })
 
@@ -41,7 +38,6 @@ exports.add = asyncHandler(async(req,res,next) => {
         const addedList = new list(req.body);
         addedList.userId = userr._id;
         const lists = await addedList.save({userId:user._id});
-        // res.json({status:status.SUCCESS,data:lists});
         res.json(lists);
 
 })
@@ -49,7 +45,6 @@ exports.add = asyncHandler(async(req,res,next) => {
 exports.update = asyncHandler( async(req,res) => {
        const id = req.params.id;
        const updated = await list.updateOne({_id:id},{$set:{...req.body}})
-    //    res.json({status:status.ERROR,data:{updated}});
        res.json(updated);
 })
 
