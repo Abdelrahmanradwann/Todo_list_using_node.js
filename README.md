@@ -28,6 +28,13 @@ For the smooth execution of the application, you need to set the following envir
 * cd todoo
 * npm start
 
+## Snapshots
+![image](https://github.com/Abdelrahmanradwann/Todo_list_using_node.js/assets/133225811/c57c5d1b-8f5f-48bf-83e9-2f11748400ca)
+![image](https://github.com/Abdelrahmanradwann/Todo_list_using_node.js/assets/133225811/56c1810f-a1f5-4244-8ed4-2ae981840bbe)
+![image](https://github.com/Abdelrahmanradwann/Todo_list_using_node.js/assets/133225811/4d0e826f-09c0-4047-b821-51d368f163cb)
+
+
+
 
 
   
